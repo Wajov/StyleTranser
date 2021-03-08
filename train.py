@@ -16,7 +16,7 @@ DECAY_EPOCH = 100
 
 
 if __name__ == '__main__':
-    dataset = utils.ImageDataset('./picture/', './painting')
+    dataset = utils.ImageDataset('picture/', 'painting')
     dataloader = data.DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
 
     G_X2Y = models.Generator(3, 3).cuda()
@@ -146,17 +146,17 @@ if __name__ == '__main__':
 
         print('\n\nEpoch {} finished\n\n'.format(epoch))
 
-    file = open('loss_G.txt', 'w')
+    file = open('output/loss_G.txt', 'w')
     for loss in losses_G:
         file.write(str(loss) + '\n')
 
     file.close()
-    file = open('loss_D_X.txt', 'w')
+    file = open('output/loss_D_X.txt', 'w')
     for loss in losses_D_X:
         file.write(str(loss) + '\n')
     file.close()
 
-    file = open('loss_D_Y.txt', 'w')
+    file = open('output/loss_D_Y.txt', 'w')
     for loss in losses_D_X:
         file.write(str(loss) + '\n')
     file.close()

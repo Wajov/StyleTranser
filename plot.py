@@ -1,19 +1,19 @@
 from matplotlib import pyplot
 
 
-file = open('loss_G.txt', 'r')
+file = open('output/loss_G.txt', 'r')
 loss_G = []
 for line in file:
     loss_G.append(float(line))
 file.close()
 
-file = open('loss_D_X.txt', 'r')
+file = open('output/loss_D_X.txt', 'r')
 loss_D_X = []
 for line in file:
     loss_D_X.append(float(line))
 file.close()
 
-file = open('loss_D_Y.txt', 'r')
+file = open('output/loss_D_Y.txt', 'r')
 loss_D_Y = []
 for line in file:
     loss_D_Y.append(float(line))
