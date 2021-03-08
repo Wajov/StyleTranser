@@ -51,7 +51,7 @@ if __name__ == "__main__":
     losses_D_X = []
     losses_D_Y = []
 
-    for epoch in range(20):
+    for epoch in range(N_EPOCH):
         for batch in dataloader:
             t = time.time()
 
@@ -144,26 +144,19 @@ if __name__ == "__main__":
         torch.save(D_X.state_dict(), "output/D_X.pth")
         torch.save(D_Y.state_dict(), "output/D_Y.pth")
 
-        print()
-        print()
-        print("Epoch {} finished".format(epoch))
-        print()
-        print()
+        print("\n\nEpoch {} finished\n\n".format(epoch))
 
-    file = open("loss_G", 'w')
+    file = open("loss_G.txt", 'w')
     for loss in losses_G:
-        file.write(loss)
-        file.write("\n")
+        file.write(str(loss) + "\n")
 
     file.close()
-    file = open("loss_D_X", 'w')
+    file = open("loss_D_X.txt", 'w')
     for loss in losses_D_X:
-        file.write(loss)
-        file.write("\n")
+        file.write(str(loss) + "\n")
     file.close()
 
-    file = open("loss_D_Y", 'w')
+    file = open("loss_D_Y.txt", 'w')
     for loss in losses_D_X:
-        file.write(loss)
-        file.write("\n")
+        file.write(str(loss) + "\n")
     file.close()
