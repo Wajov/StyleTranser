@@ -33,9 +33,9 @@ if __name__ == '__main__':
     optimizer_D_X = optim.Adam(D_X.parameters(), lr=LR, betas=(0.5, 0.999))
     optimizer_D_Y = optim.Adam(D_Y.parameters(), lr=LR, betas=(0.5, 0.999))
 
-    lr_scheduler_G = torch.optim.lr_scheduler.LambdaLR(optimizer_G, lr_lambda=utils.LambdaLR(N_EPOCH, EPOCH, DECAY_EPOCH).step)
-    lr_scheduler_D_X = torch.optim.lr_scheduler.LambdaLR(optimizer_D_X, lr_lambda=utils.LambdaLR(N_EPOCH, EPOCH, DECAY_EPOCH).step)
-    lr_scheduler_D_Y = torch.optim.lr_scheduler.LambdaLR(optimizer_D_Y, lr_lambda=utils.LambdaLR(N_EPOCH, EPOCH, DECAY_EPOCH).step)
+    lr_scheduler_G = optim.lr_scheduler.LambdaLR(optimizer_G, lr_lambda=utils.LambdaLR(N_EPOCH, EPOCH, DECAY_EPOCH).step)
+    lr_scheduler_D_X = optim.lr_scheduler.LambdaLR(optimizer_D_X, lr_lambda=utils.LambdaLR(N_EPOCH, EPOCH, DECAY_EPOCH).step)
+    lr_scheduler_D_Y = optim.lr_scheduler.LambdaLR(optimizer_D_Y, lr_lambda=utils.LambdaLR(N_EPOCH, EPOCH, DECAY_EPOCH).step)
 
     criterion_GAN = nn.MSELoss()
     criterion_cycle = nn.L1Loss()
