@@ -22,7 +22,7 @@ class ImageDataset(data.Dataset):
     def __getitem__(self, index):
         item_X = self.transform(Image.open(self.images_X[index % len(self.images_X)]))
         item_Y = self.transform(Image.open(self.images_Y[index % len(self.images_Y)]))
-        return {"X": item_X, "Y": item_Y}
+        return {'X': item_X, 'Y': item_Y}
 
 
 def weights_init_normal(m):

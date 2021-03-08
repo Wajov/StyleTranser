@@ -15,8 +15,8 @@ N_EPOCH = 100
 DECAY_EPOCH = 150
 
 
-if __name__ == "__main__":
-    dataset = utils.ImageDataset("./picture/", "./painting")
+if __name__ == '__main__':
+    dataset = utils.ImageDataset('./picture/', './painting')
     dataloader = data.DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True)
 
     G_X2Y = models.Generator(3, 3).cuda()
@@ -55,8 +55,8 @@ if __name__ == "__main__":
         for batch in dataloader:
             t = time.time()
 
-            real_X = batch["X"].cuda()
-            real_Y = batch["Y"].cuda()
+            real_X = batch['X'].cuda()
+            real_Y = batch['Y'].cuda()
 
             # ======== Optimize G ========
             optimizer_G.zero_grad()
@@ -127,7 +127,7 @@ if __name__ == "__main__":
             # ========================
 
             print(time.time() - t)
-            print("{} {} {}".format(loss_G.item(), loss_D_X.item(), loss_D_Y.item()))
+            print('{} {} {}'.format(loss_G.item(), loss_D_X.item(), loss_D_Y.item()))
 
             losses_G.append(loss_G.item())
             losses_D_X.append(loss_D_X.item())
@@ -139,24 +139,24 @@ if __name__ == "__main__":
         lr_scheduler_D_Y.step()
 
         # Save models
-        torch.save(G_X2Y.state_dict(), "output/G_X2Y.pth")
-        torch.save(G_Y2X.state_dict(), "output/G_Y2X.pth")
-        torch.save(D_X.state_dict(), "output/D_X.pth")
-        torch.save(D_Y.state_dict(), "output/D_Y.pth")
+        torch.save(G_X2Y.state_dict(), 'output/G_X2Y.pth')
+        torch.save(G_Y2X.state_dict(), 'output/G_Y2X.pth')
+        torch.save(D_X.state_dict(), 'output/D_X.pth')
+        torch.save(D_Y.state_dict(), 'output/D_Y.pth')
 
-        print("\n\nEpoch {} finished\n\n".format(epoch))
+        print('\n\nEpoch {} finished\n\n'.format(epoch))
 
-    file = open("loss_G.txt", 'w')
+    file = open('loss_G.txt', 'w')
     for loss in losses_G:
-        file.write(str(loss) + "\n")
+        file.write(str(loss) + '\n')
 
     file.close()
-    file = open("loss_D_X.txt", 'w')
+    file = open('loss_D_X.txt', 'w')
     for loss in losses_D_X:
-        file.write(str(loss) + "\n")
+        file.write(str(loss) + '\n')
     file.close()
 
-    file = open("loss_D_Y.txt", 'w')
+    file = open('loss_D_Y.txt', 'w')
     for loss in losses_D_X:
-        file.write(str(loss) + "\n")
+        file.write(str(loss) + '\n')
     file.close()
