@@ -9,10 +9,10 @@ import utils
 import models
 
 LR = 0.0002
-BATCH_SIZE = 5
+BATCH_SIZE = 10
 EPOCH = 0
-N_EPOCH = 100
-DECAY_EPOCH = 150
+N_EPOCH = 200
+DECAY_EPOCH = 100
 
 
 if __name__ == '__main__':
